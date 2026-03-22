@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>untuk kamu</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Georgia", serif;
+  color: #f1f1f1;
+  overflow-x: hidden;
+}
+
+/* background blur cinematic */
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e") center/cover no-repeat;
+  filter: blur(12px) brightness(40%);
+  z-index: -1;
+}
+
+/* layer gelap tambahan */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: -1;
+}
+
+.section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.text {
+  max-width: 700px;
+  line-height: 1.8;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.5s ease;
+}
+
+/* muncul saat scroll */
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h1 {
+  font-weight: normal;
+  opacity: 0.7;
+}
+
+button {
+  padding: 10px 20px;
+  border: 1px solid white;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="overlay"></div>
+
+<!-- musik -->
+<audio id="music" loop>
+  <source src="https://files.catbox.moe/8c9y5k.mp3" type="audio/mpeg">
+</audio>
+
+<!-- opening -->
+<div class="section">
+  <div>
+    <h1>untuk kamu</h1>
+    <button onclick="start()">buka pelan pelan</button>
+  </div>
+</div>
+
+<!-- isi cerita -->
+<div class="section"><div class="text">pagi ini, aku tidak langsung mengucapkan apa apa  
+aku hanya duduk sebentar di dalam kepalaku sendiri  
+membiarkan namamu lewat lebih lama dari biasanya</div></div>
+
+<div class="section"><div class="text">katanya, hari ini usiamu bertambah  
+tapi aku tidak benar benar percaya  
+sebab kamu selalu terasa seperti sesuatu  
+yang tidak selesai oleh waktu</div></div>
+
+<div class="section"><div class="text">aku mengingatmu dalam hal hal kecil  
+yang tidak sempat dijelaskan  
+dalam diam yang tidak pernah benar benar kosong</div></div>
+
+<div class="section"><div class="text">aku tidak pandai merayakan  
+maka aku memilih tinggal lebih lama  
+di antara kata kata yang tidak sempurna</div></div>
+
+<div class="section"><div class="text">di usiamu yang sekarang  
+aku tidak ingin meminta apa apa  
+hanya semoga hidup tidak terlalu keras  
+ketika memelukmu</div></div>
+
+<div class="section"><div class="text">dan kalau pun dunia tetap seperti itu  
+semoga kamu tidak lupa  
+bahwa kamu pernah cukup  
+bahkan tanpa harus menjadi apa apa</div></div>
+
+<div class="section"><div class="text">aku ingin ada  
+tidak sebagai sesuatu yang besar  
+tidak juga sesuatu yang harus kamu pahami  
+cukup sebagai seseorang yang tidak pergi</div></div>
+
+<div class="section"><div class="text">selamat ulang tahun  
+
+aku mencintaimu  
+dengan cara yang pelan  
+tapi ingin lama</div></div>
+
+<script>
+function start() {
+  document.getElementById("music").play();
+  window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+}
+
+// efek muncul saat scroll
+const texts = document.querySelectorAll('.text');
+
+window.addEventListener('scroll', () => {
+  texts.forEach(el => {
+    const position = el.getBoundingClientRect().top;
+    const screen = window.innerHeight;
+
+    if(position < screen - 100){
+      el.classList.add('show');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
